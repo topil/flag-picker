@@ -3,11 +3,11 @@ package com.apple.assignment.flagpicker.controller;
 import com.apple.assignment.flagpicker.model.response.Country;
 import com.apple.assignment.flagpicker.service.FlagPickerService;
 import io.micrometer.core.instrument.MeterRegistry;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -23,18 +23,17 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @WebMvcTest(FlagController.class)
 @RunWith(SpringRunner.class)
-@ContextConfiguration(classes = {MeterRegistry.class})
 public class FlagControllerTest {
-    @Autowired
-    private MockMvc mockMvc;
-
     @MockBean
     private FlagPickerService service;
 
     @MockBean
     private MeterRegistry meterRegistry;
 
-//    @Test
+    @Autowired
+    private MockMvc mockMvc;
+
+    @Test
     public void testPickFlagByCountryName() throws Exception {
         List<Country> countries = new ArrayList<>();
         Country c = new Country();
@@ -47,7 +46,7 @@ public class FlagControllerTest {
                 .andExpect(content().string(containsString("myFlag")));
     }
 
-//    @Test
+    @Test
     public void testPickFlagByContinentName() throws Exception {
         List<Country> countries = new ArrayList<>();
         Country c1 = new Country();

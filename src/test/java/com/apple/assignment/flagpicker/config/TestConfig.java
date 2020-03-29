@@ -8,7 +8,6 @@ import org.springframework.test.context.ActiveProfiles;
 
 @ActiveProfiles(value = "test")
 @ComponentScan({
-
 })
 @AutoConfigurationPackage
 @SpringBootApplication(exclude={DataSourceAutoConfiguration.class})

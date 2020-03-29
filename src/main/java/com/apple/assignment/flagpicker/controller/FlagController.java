@@ -55,17 +55,17 @@ public class FlagController {
             //TODO: requirement is not very clear about this. return the country that has continentName as input
             LOGGER.debug("pickFlag by continent-name & country-name ");
             list = service.pickByCountry(countryName).stream().filter(country -> continentName.equals(country.getContinentName())).collect(Collectors.toList());
-            countryCounter.increment();
-            continentCounter.increment();
+            increaseCounter(countryCounter);
+            increaseCounter(continentCounter);
 
         }else if(continentName != null){
             LOGGER.debug("pickFlag by continent-name only.");
             list = service.pickByContinent(continentName);
-            continentCounter.increment();
+            increaseCounter(continentCounter);
         }else{
             LOGGER.debug("pickFlag by country-name only.");
             list = service.pickByCountry(countryName);
-            countryCounter.increment();
+            increaseCounter(countryCounter);
         }
 
         if(CollectionUtils.isEmpty(list)){
@@ -85,6 +85,12 @@ public class FlagController {
         }
 
         throw new EmptyResultException(sb.toString());
+    }
+
+    private void increaseCounter(Counter counter){
+        if(counter != null){
+            counter.increment();
+        }
     }
 
     private void initCounters() {

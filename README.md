@@ -1,7 +1,7 @@
 # Flag Picker
 
 
-## Build & Run Locally
+## Build Run & Deploy
 Flag-Picker requires MongoDB running at backend. MongoDB is the default data storage, it is configurable in the yml file 
  to switch to MySql. 
  
@@ -10,7 +10,7 @@ Flag-Picker requires MongoDB running at backend. MongoDB is the default data sto
 docker run -d --name mongo -p 27017:27017 mongo:4.0.3
 ```
 
-### Build Flog-Picker
+### Build Flag-Picker
 ```
 ./mvnw clean install -DskipTests
 export SPRING_PROFILES_ACTIVE=dev
@@ -20,6 +20,11 @@ export SPRING_PROFILES_ACTIVE=dev
 ### Build Docker image
 ```
 docker build --tag flag-picker:1.0 .
+```
+
+### Deploy
+```
+docker run --publish 8000:8080 --name flag-picker:1.0
 ```
 
 ## API
@@ -135,3 +140,18 @@ CREATE TABLE COUNTRIES (
   CONSTRAINT fk_countries_continents FOREIGN KEY (CONTINENT_ID) REFERENCES CONTINENTS (ID)
 );
 ```
+
+## Next Steps
+
+### Quality
+Quality is always the most important thing for an application. I wish I could have more time to write the unit tests,
+as well as integrate with Spotbugs to improve the quality of the code.
+
+### SecurityCheck
+Integrate with Sping Authentication to secure the services.
+
+### Scalability 
+Integrate with Load balance tools like HAProxy to serve more requests currently.
+
+### Monitoring
+Integrate with Prometheus and Grafana for better monitoring.
