@@ -1,6 +1,8 @@
 package com.apple.assignment.flagpicker.model.mongo;
 
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
+
 import javax.persistence.Id;
 import javax.validation.constraints.NotEmpty;
 
@@ -9,6 +11,7 @@ public class CountryEntity {
     @Id
     private String id;
 
+    @Indexed
     @NotEmpty
     private String countryName;
 
