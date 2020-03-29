@@ -5,7 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 public class Continent {
@@ -16,7 +16,7 @@ public class Continent {
     @NotNull
     private String name;
 
-    private Set<Country> countries;
+    private List<Country> countries;
 
     public int getId() {
         return id;
@@ -34,11 +34,11 @@ public class Continent {
         this.name = name;
     }
 
-    public Set<Country> getCountries() {
+    public List<Country> getCountries() {
         return countries;
     }
 
-    public void setCountries(Set<Country> countries) {
+    public void setCountries(List<Country> countries) {
         this.countries = countries;
     }
 

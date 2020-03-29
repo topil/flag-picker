@@ -18,6 +18,10 @@ public class Country {
     @NotNull
     private String flag;
 
+    @NotNull
+    private Continent continent;
+
+
     public Integer getId() {
         return id;
     }
@@ -42,19 +46,12 @@ public class Country {
         this.flag = flag;
     }
 
-    @Override
-    public int hashCode(){
-        return id;
+    public Continent getContinent() {
+        return continent;
     }
 
-    @Override
-    public boolean equals(Object o){
-        if(!(o instanceof Country)){
-            return false;
-        }
-
-        Country other = (Country)o;
-        return this.id == other.id && this.name.equals(other.name);
+    public void setContinent(Continent continent) {
+        this.continent = continent;
     }
 
     @Override
@@ -62,7 +59,8 @@ public class Country {
         StringBuilder sb = new StringBuilder();
         sb.append("[country:  id = ").append(id)
                 .append(", name = ").append(name)
-                .append(", flog = ").append(flag)
+                .append(", flag = ").append(flag)
+                .append(", continent = ").append(continent)
                 .append("]");
 
         return sb.toString();
