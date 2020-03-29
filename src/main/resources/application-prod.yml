@@ -1,0 +1,21 @@
+logging:
+  level:
+    org.springframework: INFO
+    com.apple.assignment.flagpicker: INFO
+
+storage:
+  type: mongo
+
+
+spring:
+  mongodb:
+    host: localhost
+    database: flagpicker
+    port: 27017
+
+
+cache:
+  guava:
+    flag:
+      name: CountryFlagCache
+      ttl: 60

@@ -1,13 +1,6 @@
 package com.apple.assignment.flagpicker.service;
 
-import static org.hamcrest.Matchers.containsString;
-import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
-import com.apple.assignment.flagpicker.config.MongoConfig;
+import com.apple.assignment.flagpicker.config.TestConfig;
 import com.apple.assignment.flagpicker.model.mongo.CountryEntity;
 import com.apple.assignment.flagpicker.model.response.Country;
 import com.apple.assignment.flagpicker.repository.mongo.CountryMongoRepository;
@@ -17,17 +10,15 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.util.StringUtils;
 
-import javax.validation.constraints.AssertTrue;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.mockito.Mockito.when;
+@ContextConfiguration(classes = {TestConfig.class})
 @RunWith(SpringRunner.class)
 public class CountryServiceMongoTest {
 

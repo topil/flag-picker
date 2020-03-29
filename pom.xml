@@ -15,12 +15,15 @@
     </parent>
 
     <properties>
-
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
+
         <apache-commons.version>3.4</apache-commons.version>
-        <guava.version>25.1-jre</guava.version>
         <caffeine.version>2.5.5</caffeine.version>
+        <guava.version>25.1-jre</guava.version>
+        <spring-context-support.version>4.3.7.RELEASE</spring-context-support.version>
+        <swagger.version>2.9.2</swagger.version>
+
     </properties>
 
 
@@ -53,7 +56,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context-support</artifactId>
-            <version>4.3.7.RELEASE</version>
+            <version>${spring-context-support.version}</version>
         </dependency>
 
 
@@ -84,6 +87,11 @@
             <artifactId>micrometer-registry-prometheus</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>${swagger.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -93,6 +101,22 @@
 
 
     </dependencies>
+
+
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <active.profile>dev</active.profile>
+            </properties>
+        </profile>
+        <profile>
+            <id>prod</id>
+            <properties>
+                <active.profile>prod</active.profile>
+            </properties>
+        </profile>
+    </profiles>
 
     <repositories>
         <repository>

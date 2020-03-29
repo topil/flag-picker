@@ -1,7 +1,6 @@
 package com.apple.assignment.flagpicker.controller;
 
 import com.apple.assignment.flagpicker.constant.ApiVersion;
-import com.apple.assignment.flagpicker.error.ApiError;
 import com.apple.assignment.flagpicker.error.EmptyResultException;
 import com.apple.assignment.flagpicker.model.response.Country;
 import com.apple.assignment.flagpicker.service.FlagPickerService;
@@ -10,7 +9,6 @@ import io.micrometer.core.instrument.MeterRegistry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.MissingServletRequestParameterException;

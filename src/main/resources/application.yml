@@ -9,15 +9,6 @@ logging:
     org.springframework: INFO
     com.apple.assignment.flagpicker: DEBUG
 
-storage:
-  type: mongo
-
-
-spring:
-  mongodb:
-    host: localhost
-    database: flagpicker
-    port: 27017
 
 
 management:
@@ -25,9 +16,3 @@ management:
     web:
       exposure:
         include: prometheus
-
-cache:
-  guava:
-    flag:
-      name: CountryFlagCache
-      ttl: 60

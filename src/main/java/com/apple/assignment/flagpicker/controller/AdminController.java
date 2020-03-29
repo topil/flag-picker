@@ -23,7 +23,7 @@ public class AdminController {
     }
 
     @CacheEvict(value = GuavaConfig.COUNTRY_CACHE, allEntries = true)
-    @RequestMapping(value = "/clearCache", method = GET)
+    @RequestMapping(value = "/clear-cache", method = GET)
     public String clearCache() {
         return "Cache Cleared";
     }
