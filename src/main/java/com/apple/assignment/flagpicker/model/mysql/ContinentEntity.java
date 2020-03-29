@@ -1,14 +1,12 @@
 package com.apple.assignment.flagpicker.model.mysql;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
-public class Continent {
+@Table(name = "continents")
+public class ContinentEntity {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private int id;
@@ -16,7 +14,12 @@ public class Continent {
     @NotNull
     private String name;
 
-    private List<Country> countries;
+    @OneToMany(mappedBy = "continent", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<CountryEntity> countries;
+
+    public ContinentEntity(String name){
+        this.name = name;
+    }
 
     public int getId() {
         return id;
@@ -34,11 +37,11 @@ public class Continent {
         this.name = name;
     }
 
-    public List<Country> getCountries() {
+    public List<CountryEntity> getCountries() {
         return countries;
     }
 
-    public void setCountries(List<Country> countries) {
+    public void setCountries(List<CountryEntity> countries) {
         this.countries = countries;
     }
 
@@ -49,7 +52,7 @@ public class Continent {
                 .append(", name = ").append(name)
                 .append(", countries = [");
 
-        for(Country c : countries){
+        for(CountryEntity c : countries){
             sb.append(c);
         }
         sb.append("]]");

@@ -1,13 +1,11 @@
 package com.apple.assignment.flagpicker.model.mysql;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
-public class Country {
+@Table(name = "countries")
+public class CountryEntity {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
@@ -19,9 +17,16 @@ public class Country {
     private String flag;
 
     @NotNull
-    private Continent continent;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "id", nullable = false)
+    private ContinentEntity continent;
 
 
+    public CountryEntity(String name, String flag, ContinentEntity ce){
+        this.name = name;
+        this.flag = flag;
+        this.continent = ce;
+    }
     public Integer getId() {
         return id;
     }
@@ -46,11 +51,11 @@ public class Country {
         this.flag = flag;
     }
 
-    public Continent getContinent() {
+    public ContinentEntity getContinent() {
         return continent;
     }
 
-    public void setContinent(Continent continent) {
+    public void setContinent(ContinentEntity continent) {
         this.continent = continent;
     }
 

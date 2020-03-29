@@ -1,8 +1,12 @@
 package com.apple.assignment.flagpicker.repository.mysql;
 
-import com.apple.assignment.flagpicker.model.mysql.Country;
+import com.apple.assignment.flagpicker.model.mysql.ContinentEntity;
 import org.springframework.data.repository.CrudRepository;
 
-public interface CountryMySQLRepository extends CrudRepository<Country, Integer> {
+import java.util.List;
+
+public interface CountryMySQLRepository<CountryEntity, Integer> extends CrudRepository<CountryEntity, Integer> {
+    List<CountryEntity> findByName(String name);
+    List<CountryEntity> findByContinent(ContinentEntity continent);
 
 }
